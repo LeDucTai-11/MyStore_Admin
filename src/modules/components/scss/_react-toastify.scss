@@ -1,0 +1,74 @@
+@use './mixin' as *;
+@use './vars' as *;
+
+.Toastify__toast {
+  font-weight: normal;
+  border-radius: 8px !important;
+  font-family: $font-primary;
+  backdrop-filter: blur(10px);
+  padding: 14px !important;
+  font-size: 14px !important;
+  min-height: auto !important;
+
+  &-container {
+    top: calc(75px) !important;
+  }
+
+  &-body {
+    padding: 0 6px 0 0 !important;
+    margin: 0 !important;
+  }
+}
+
+.Toastify__toast--success {
+  border: 1px solid $success !important;
+  color: $success !important;
+  border-radius: 8px !important;
+  background-color: #f3faf7 !important;
+
+  & svg {
+    fill: $success !important;
+  }
+}
+
+.Toastify__toast--info {
+  border: 1px solid !important;
+  color: $info !important;
+  background-color: #eefcff !important;
+
+  & svg {
+    fill: $info !important;
+  }
+}
+
+.Toastify__toast--warning {
+  border: 1px solid $warning !important;
+  color: $warning !important;
+  background-color: #fff7f2 !important;
+
+  & svg {
+    fill: $warning !important;
+  }
+}
+
+.Toastify__toast--error {
+  border: 1px solid $danger !important;
+  color: $danger !important;
+  background-color: #fff5f5 !important;
+
+  & svg {
+    fill: $danger !important;
+  }
+}
+
+.Toastify {
+  &__progress-bar {
+    background-color: transparent !important;
+    opacity: 0.5 !important;
+  }
+
+  &__close-button {
+    color: $color-white !important;
+    opacity: 1 !important;
+  }
+}

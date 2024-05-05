@@ -1,0 +1,100 @@
+@use '../scss/vars' as *;
+@use '../scss/mixin' as *;
+
+.cmp-dropdown {
+  align-self: flex-start;
+  position: relative;
+
+  &__button-wrap {
+    display: inline-flex;
+    background-color: transparent;
+  }
+
+  &__menu {
+    z-index: 9999;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $color-white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 4px 0;
+
+    &--x-left {
+      right: 0;
+    }
+
+    &--x-right {
+      left: 0;
+    }
+
+    &--y-top {
+      bottom: calc(100% + 8px);
+    }
+
+    &--y-bottom {
+      top: calc(100% + 8px);
+    }
+  }
+
+  &__item {
+    padding: 8px 16px;
+    white-space: nowrap;
+    background-color: $color-white;
+    transition: $default-transition;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 144px;
+    color: $color-primary;
+
+    @include hover {
+      color: $color-primary;
+    }
+
+    @include focus {
+      background-color: $color-grey-500;
+      text-decoration: none;
+    }
+
+    &--active {
+      background-color: $danger_bg;
+    }
+
+    &--disabled {
+      background-color: $color-grey-500;
+      pointer-events: none;
+    }
+  }
+
+  &__item-icon {
+    margin-right: 8px;
+  }
+
+  &__menu--y-bottom {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.2s;
+  }
+
+  &__menu--y-bottom.visible {
+    opacity: 1;
+    transform: translateY(0px);
+    visibility: visible;
+  }
+
+  &__menu--y-top {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: 0.2s;
+  }
+
+  &__menu--y-top.visible {
+    opacity: 1;
+    transform: translateY(0px);
+    visibility: visible;
+  }
+}

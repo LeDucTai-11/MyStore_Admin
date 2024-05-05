@@ -1,0 +1,44 @@
+@use '../../scss/vars' as *;
+@use '../../scss/mixin' as *;
+
+.cmp-file-upload {
+  .cmp-file-upload {
+    &__body {
+      border: 1px dashed $color-grey-200;
+      background-color: $color-grey-50;
+      border-radius: 8px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-grey-300;
+
+      @include hover;
+
+      &--error {
+        border-color: #db0012;
+      }
+    }
+
+    &__input {
+      display: none;
+    }
+
+    &__error {
+      margin-top: 4px;
+      color: $danger;
+
+      font: {
+        size: 14px;
+      }
+    }
+  }
+
+  .accept {
+    border: 1px dashed $color-primary;
+  }
+
+  .reject {
+    border: 1px dashed $danger;
+  }
+}

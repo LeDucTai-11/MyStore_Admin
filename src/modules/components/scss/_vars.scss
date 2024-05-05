@@ -1,0 +1,112 @@
+:root {
+  --primary: #0984e8;
+  --secondary: #e3bc56;
+  --danger: #db221a;
+  --success: #1ea431;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+$info: #0492de;
+$success: #1ea431;
+$warning: #d67813;
+$danger: #db221a;
+
+$info_bg: #d6ecff;
+$success_bg: #dafad0;
+$warning_bg: #fef2cb;
+$danger_bg: #fde0d0;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-primary: #0984e8;
+$color-secondary: #e3bc56;
+
+$color-primary-700: #0f3f7f;
+$color-primary-600: #0061b0;
+$color-primary-500: #0984e8;
+$color-primary-400: #74b8f0;
+$color-primary-300: #d6ecff;
+$color-primary-200: #e9f5ff;
+$color-primary-100: #f2f9ff;
+
+$color-secondary-600: #966c00;
+$color-secondary-500: #cd9400;
+$color-secondary-400: #e3bc56;
+$color-secondary-300: #fcf0d3;
+$color-secondary-200: #fef5dd;
+$color-secondary-100: #fff9eb;
+
+$color-grey-900: #1b1c1e;
+$color-grey-800: #2d2f31;
+$color-grey-700: #484c4f;
+$color-grey-600: #6d7176;
+$color-grey-500: #91979e;
+$color-grey-400: #b5bdc5;
+$color-grey-300: #c4cad1;
+$color-grey-200: #d3d7dc;
+$color-grey-100: #edeff1; //border color
+$color-grey-50: #f8f8f9;
+$color-grey-00: #ffffff;
+
+$color-red-500: #db221a;
+$color-red-400: #ed7773;
+
+// Font
+$font-primary: 'Public Sans', sans-serif;
+$font-secondary: 'Mulish';
+$font-weight-bold: 700;
+$font-weight-medium: 600;
+$font-weight-normal: 500;
+$font-weight-regular: 400;
+
+// font-size
+$font-size-label: 16px;
+$font-size-input: 14px;
+$font-size-button: 16px;
+
+// border-radius
+$border-radius-button: 8px;
+
+// Size
+$body-size: 16px;
+$color-text-size: 14px;
+
+// button
+$button-small: 40px;
+$button-normal: 48px;
+$button-medium: 56px;
+
+// input
+$input-small: 40px;
+$input-normal: 44px;
+$input-medium: 48px;
+
+$navbar-height: 64px;
+$footer-height: $navbar-height;
+
+$sidebar-width: 264px;
+$sidebar-mini-width: 80px;
+
+$widescreen: 1440px;
+$desktop: 1280px;
+$tablet: 960px;
+$mobile: 600px;
+
+$secondary-container-width: 1100px;
+$form-width-medium: 944px;
+$form-width-normal: 770px;
+$form-width-mini: 580px;
+
+$default-shadow: 0px 4px 20px rgba(224, 224, 224, 0.5);
+
+$primary-focus-shadow: 0 0 0 2.5px rgba(116, 184, 240, 0.25);
+$error-focus-shadow: 0 0 0 2.5px rgba(237, 119, 115, 0.25);
+
+$default-space: 12px;
+$default-transition: all 0.2s ease-in-out;
+$default-transition-med: all 0.4s ease-in-out;
+$default-linear-trans: all 0.2s linear;
+$default-linear-trans-med: all 0.4s linear;
+$default-border-radius: 8px;

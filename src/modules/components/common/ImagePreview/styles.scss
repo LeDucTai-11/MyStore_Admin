@@ -1,0 +1,30 @@
+@use '../../scss/vars' as *;
+@use '../../scss/mixin' as *;
+
+.cmp-preview-image {
+  position: relative;
+  margin-right: 8px;
+
+  &__remove {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    font-weight: bold;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &__container {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__image {
+    cursor: pointer;
+    object-fit: scale-down;
+  }
+}

@@ -1,0 +1,128 @@
+@use 'src/modules/components/scss/vars' as *;
+@use 'src/modules/components/scss/mixin' as *;
+
+.cmp-select {
+  text-align: left;
+
+  .cmp-select {
+    &__control {
+      min-height: $input-small;
+      border: 1.5px solid $color-grey-300;
+      background-color: $color-white;
+      border-radius: 6px;
+      font-size: $font-size-input;
+
+      &--is-disabled {
+        background-color: $color-grey-900;
+
+        & .cmp-select {
+
+          &__placeholder,
+          &__single-value {
+            border-bottom: none;
+          }
+        }
+      }
+
+      &--is-focused {
+        border-color: $color-primary-400;
+        box-shadow: $primary-focus-shadow;
+      }
+
+      &:hover:not(&--is-focused) {
+        border: 1.5px solid $color-grey-500;
+      }
+    }
+
+    &__placeholder {
+      color: $color-grey-500 !important;
+      font-family: $font-primary;
+      font-weight: $font-weight-regular;
+    }
+
+    &__value-container {
+      padding: 0 10px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__placeholder,
+    &__single-value {
+      border-bottom: 0.5px solid $color-white;
+      font-size: $font-size-input;
+      color: $color-grey-700;
+
+      &--is-disabled {
+        color: $color-grey-600;
+      }
+    }
+
+    &__input {
+      font-size: $font-size-input;
+      color: $color-grey-700;
+    }
+
+    &__menu {
+      width: 100%;
+      border-radius: 8px;
+      z-index: 101;
+      border: $color-grey-100;
+    }
+
+    &__menu-list {
+      max-height: 200px;
+    }
+
+    &__option {
+      height: 40px;
+      font-size: 14px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  &--error {
+    .cmp-select__control {
+      border: 1.5px solid $color-red-400;
+      box-shadow: $error-focus-shadow;
+
+      &--is-focused {
+        border-color: $color-red-400;
+
+        &:hover {
+          border-color: $color-red-400;
+        }
+      }
+
+      &:hover:not(&--is-focused) {
+        border-color: $color-red-400;
+      }
+    }
+  }
+
+  &--size-small {
+    .cmp-select__control {
+      min-height: $input-small;
+    }
+  }
+
+  &__icon {
+    .cmp-select__control {
+      padding-left: 8px;
+    }
+  }
+
+  &--end {
+    .cmp-select {
+      &_control {
+        position: relative;
+      }
+
+      &__menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+      }
+    }
+  }
+}

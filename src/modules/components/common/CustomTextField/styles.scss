@@ -1,0 +1,10 @@
+@use 'src/modules/components/scss/vars' as *;
+
+.custom-text-field {
+  &--small {
+    height: $input-small;
+  }
+  &--medium {
+    height: $input-normal;
+  }
+}

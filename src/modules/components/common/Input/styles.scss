@@ -1,0 +1,56 @@
+@use 'src/modules/components/scss/vars' as *;
+@use 'src/modules/components/scss/mixin' as *;
+
+.cmp-input {
+  font-family: $font-primary;
+  height: $input-normal;
+  padding: 10px;
+  border: 1.5px solid $color-grey-300;
+  background-color: $color-white;
+  border-radius: 8px;
+  font-size: $font-size-input;
+  outline: none;
+  transition: all 0.1s linear;
+
+  &::placeholder {
+    color: $color-grey-300;
+  }
+
+  &--icon {
+    padding-right: 36px;
+  }
+
+  &:hover:not(:focus):not(&--error):not(:disabled) {
+    border: 1.5px solid $color-grey-500;
+  }
+
+  &:focus:not(&--error){
+    border: 2px solid $color-primary-400;
+    box-shadow: $primary-focus-shadow;
+  }
+
+  &--error {
+    border: 1.5px solid $color-red-400;
+    box-shadow: $error-focus-shadow;
+    &:focus {
+      border-width: 2px;
+    }
+  }
+
+  &:disabled {
+    background-color: $color-grey-50;
+  }
+
+  &__icon {
+    position: absolute !important;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+
+    @include hover;
+  }
+
+  &--small-size {
+    height: $input-small; 
+  }
+}
