@@ -5,6 +5,7 @@ import { Navigate } from 'react-router';
 // import Dev from './Dev';
 import SplashScreen from './StartupContainers/SplashScreen';
 const StaffList = React.lazy(() => import('./Admin/StaffManagement/StaffList'));
+const ShipperList = React.lazy(() => import('./Admin/ShipperManagement/ShipperList'));
 const ProductList = React.lazy(() => import('./Admin/ProductManagement/ProductList'));
 const CustomerList = React.lazy(() => import('./Admin/CustomerManagement/CustomerList'));
 const CategoryList = React.lazy(() => import('./Admin/CategoryManagement/CategoryList'));
@@ -77,6 +78,7 @@ export const routerGroup = [
     isOnlyAdminSite: true,
   },
   { path: PATHS.staff, element: <StaffList />, isRequireAuth: true, isOnlyAdminSite: true },
+  { path: PATHS.shipper, element: <ShipperList />, isRequireAuth: true, isOnlyAdminSite: true },
   { path: PATHS.product, element: <ProductList />, isRequireAuth: true },
   { path: PATHS.customer, element: <CustomerList />, isRequireAuth: true },
   { path: PATHS.profile, element: <UserProfile />, isRequireAuth: true },

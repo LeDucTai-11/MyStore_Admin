@@ -18,6 +18,8 @@ import {
   IoPeopleOutline,
   IoPerson,
   IoPersonOutline,
+  IoPhoneLandscape,
+  IoPhoneLandscapeOutline,
   IoReader,
   IoReaderOutline,
   IoStorefront,
@@ -195,6 +197,22 @@ const MenuItems: MenuItemType[] = [
     activeIcon: (
       <div className="title-icon" aria-details="Staff">
         <IoPerson size={20} />
+      </div>
+    ),
+    accessRoles: [UserRole.ADMIN],
+  },
+  {
+    label: 'Shipper',
+    path: PATHS.shipper,
+    activePath: PATHS.shipper,
+    icon: (
+      <div className="title-icon" aria-details="Shipper">
+        <IoPhoneLandscapeOutline size={20} />
+      </div>
+    ),
+    activeIcon: (
+      <div className="title-icon" aria-details="Shipper">
+        <IoPhoneLandscape size={20} />
       </div>
     ),
     accessRoles: [UserRole.ADMIN],

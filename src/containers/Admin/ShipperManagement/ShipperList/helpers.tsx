@@ -11,6 +11,10 @@ export const UserRoleOptions = [
     label: getStartCase(ROLE_NAME[ROLE_ID._STAFF]),
     value: ROLE_ID._STAFF,
   },
+  {
+    label: getStartCase(ROLE_NAME[ROLE_ID._SHIPPER]),
+    value: ROLE_ID._SHIPPER,
+  },
 ];
 
 export const UserStatusOptions = [
@@ -50,10 +54,10 @@ export const customRoleRender = (userRoles: UserRoles[]) => {
   }
 };
 
-export type StaffFilterFormFieldsType = {
+export type ShipperFilterFormFieldsType = {
   active: string;
 };
 
-export const emptyStaffFilterValues: StaffFilterFormFieldsType = {
+export const emptyShipperFilterValues: ShipperFilterFormFieldsType = {
   active: null,
 };

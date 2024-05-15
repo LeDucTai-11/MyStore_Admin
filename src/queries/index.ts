@@ -6,6 +6,7 @@ export * from './OrderRequest';
 export * from './Product';
 export * from './Profile';
 export * from './Staff';
+export * from './Shipper';
 export * from './Store';
 export * from './Voucher';
 export * from './keys';

@@ -6,6 +6,7 @@ export enum ApiKey {
   USERS_LIST = '/admin/users',
   PRODUCTS = '/admin/products',
   ADD_STAFF = '/admin/cashiers',
+  ADD_SHIPPER = 'admin/shipper',
   AUTH = '/auth',
   CATEGORY = '/admin/category',
   IMAGE = '/admin/files',

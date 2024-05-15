@@ -19,12 +19,14 @@ export enum ROLE_ID {
   _USER = 1,
   _STAFF = 2,
   _ADMIN = 3,
+  _SHIPPER = 4
 }
 
 export const ROLE_NAME = {
   1: 'User',
   2: 'Staff',
   3: 'Admin',
+  4: 'Shipper'
 };
 
 export type GetPropertiesParams = TableParams & {
