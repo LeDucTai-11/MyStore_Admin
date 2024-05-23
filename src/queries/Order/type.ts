@@ -6,18 +6,20 @@ export type OrderListParams = TableParams;
 export enum OrderStatusId {
   PENDING_CONFIRM = 1,
   CONFIRMED = 2,
-  COMPLETED = 3,
-  PENDING_PAYMENT = 4,
-  PAYMENT_CONFIRMED = 5,
-  CANCELED = 6,
+  PENDING_PAYMENT = 3,
+  PAYMENT_CONFIRMED = 4,
+  DELIVERING = 5,
+  COMPLETED = 6,
+  CANCELED = 7,
 }
 
 export const OrderStatus = {
   [OrderStatusId.PENDING_CONFIRM]: 'Pending',
   [OrderStatusId.CONFIRMED]: 'Confirmed',
-  [OrderStatusId.COMPLETED]: 'Completed',
   [OrderStatusId.PENDING_PAYMENT]: 'Pending payment',
   [OrderStatusId.PAYMENT_CONFIRMED]: 'Paid',
+  [OrderStatusId.DELIVERING]: 'Delivering',
+  [OrderStatusId.COMPLETED]: 'Completed',
   [OrderStatusId.CANCELED]: 'Cancelled',
 };
 

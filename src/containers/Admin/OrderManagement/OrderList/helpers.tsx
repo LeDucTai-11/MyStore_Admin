@@ -23,6 +23,8 @@ export const customOrderStatusRender = (orderStatusId: number) => {
       );
     case OrderStatusId.CANCELED:
       return <Chip label={getCapitalize(OrderStatus[OrderStatusId.CANCELED])} color="error" />;
+      case OrderStatusId.DELIVERING:
+        return <Chip label={getCapitalize(OrderStatus[OrderStatusId.DELIVERING])} color="warning" />;
     default:
       return '--';
   }
