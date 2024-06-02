@@ -25,6 +25,14 @@ export const orderStatusOptions = [
     value: OrderStatusId.CONFIRMED,
   },
   {
+    label: OrderStatus[OrderStatusId.DELIVERING],
+    value: OrderStatusId.DELIVERING,
+  },
+  {
+    label: OrderStatus[OrderStatusId.COMPLETED],
+    value: OrderStatusId.COMPLETED,
+  },
+  {
     label: OrderStatus[OrderStatusId.CANCELED],
     value: OrderStatusId.CANCELED,
   },

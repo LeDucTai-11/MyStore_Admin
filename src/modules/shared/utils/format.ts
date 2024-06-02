@@ -27,7 +27,7 @@ export const formatPhoneNumber = (
 };
 
 export const getFullName = ({ firstName = '', middleName = '', lastName = '' } = {}) =>
-  `${firstName}${middleName ? ` ${middleName} ` : ' '}${lastName ? lastName : ''}`;
+  `${lastName ? lastName : ''}${middleName ? ` ${middleName} ` : ' '}${firstName ? firstName : ''}`;
 
 export const getStartCase = (value: string) => (value ? startCase(value.toLowerCase()) : '');
 
