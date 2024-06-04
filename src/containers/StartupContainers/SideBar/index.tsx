@@ -185,34 +185,34 @@ const MenuItems: MenuItemType[] = [
     ),
     accessRoles: [UserRole.ADMIN, UserRole.STAFF],
   },
-  {
-    label: 'Staff',
-    path: PATHS.staff,
-    activePath: PATHS.staff,
-    icon: (
-      <div className="title-icon" aria-details="Staff">
-        <IoPersonOutline size={20} />
-      </div>
-    ),
-    activeIcon: (
-      <div className="title-icon" aria-details="Staff">
-        <IoPerson size={20} />
-      </div>
-    ),
-    accessRoles: [UserRole.ADMIN],
-  },
+  // {
+  //   label: 'Staff',
+  //   path: PATHS.staff,
+  //   activePath: PATHS.staff,
+  //   icon: (
+  //     <div className="title-icon" aria-details="Staff">
+  //       <IoPersonOutline size={20} />
+  //     </div>
+  //   ),
+  //   activeIcon: (
+  //     <div className="title-icon" aria-details="Staff">
+  //       <IoPerson size={20} />
+  //     </div>
+  //   ),
+  //   accessRoles: [UserRole.ADMIN],
+  // },
   {
     label: 'Shipper',
     path: PATHS.shipper,
     activePath: PATHS.shipper,
     icon: (
       <div className="title-icon" aria-details="Shipper">
-        <IoPhoneLandscapeOutline size={20} />
+        <IoPersonOutline size={20} />
       </div>
     ),
     activeIcon: (
       <div className="title-icon" aria-details="Shipper">
-        <IoPhoneLandscape size={20} />
+        <IoPerson size={20} />
       </div>
     ),
     accessRoles: [UserRole.ADMIN],

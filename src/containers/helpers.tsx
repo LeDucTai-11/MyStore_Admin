@@ -77,7 +77,7 @@ export const routerGroup = [
     isRequireAuth: true,
     isOnlyAdminSite: true,
   },
-  { path: PATHS.staff, element: <StaffList />, isRequireAuth: true, isOnlyAdminSite: true },
+  // { path: PATHS.staff, element: <StaffList />, isRequireAuth: true, isOnlyAdminSite: true },
   { path: PATHS.shipper, element: <ShipperList />, isRequireAuth: true, isOnlyAdminSite: true },
   { path: PATHS.product, element: <ProductList />, isRequireAuth: true },
   { path: PATHS.customer, element: <CustomerList />, isRequireAuth: true },

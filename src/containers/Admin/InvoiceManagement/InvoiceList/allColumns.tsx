@@ -52,7 +52,7 @@ export const allColumns = ({
     },
     {
       name: '',
-      label: 'Staff',
+      label: 'Created by',
       options: {
         filter: false,
         sort: false,

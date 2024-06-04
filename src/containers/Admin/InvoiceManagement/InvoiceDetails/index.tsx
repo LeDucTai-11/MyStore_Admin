@@ -75,7 +75,7 @@ const ImportOrderForm = ({ invoiceId }: PropsType) => {
             <Stack direction={'row'} alignItems={'center'} spacing={1}>
               <BsPersonAdd size={16} color={COLOR_CODE.GREY_700} />
               <Typography fontSize={15} fontWeight={600}>
-                Staff
+                Created by
               </Typography>
             </Stack>
             <Typography fontSize={15}>

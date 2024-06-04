@@ -92,11 +92,11 @@ const InvoiceList: React.FC = () => {
           >
             Add new invoice
           </Button>
-          {RoleService.isAdminRole(roleId) && (
+          {/* {RoleService.isAdminRole(roleId) && (
             <CustomTableFilterContainer filterParamsKeys={filterParamsKey}>
               <InvoiceFilter searchValues={paramsUrl} />
             </CustomTableFilterContainer>
-          )}
+          )} */}
         </Stack>
       </Stack>
       <Table
