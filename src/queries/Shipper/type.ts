@@ -30,6 +30,7 @@ export type AddShipperPayload = {
   phone: string;
   email: string;
   address: string;
+  storeId: string;
 };
 
 export type DeleteShipperPayload = {

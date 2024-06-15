@@ -1,6 +1,8 @@
 import { DEFAULT_PASSWORD } from '@appConfig/constants';
-import { COLOR_CODE, DialogContext, MuiTextField } from '@components';
+import { COLOR_CODE, DialogContext, MuiSelect, MuiTextField, SelectOption } from '@components';
 import {
+  AutocompleteChangeReason,
+  AutocompleteInputChangeReason,
   Button,
   FormControlLabel,
   FormLabel,
@@ -10,11 +12,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { useGetAllShipper } from '@queries';
+import { useGetAllShipper, useGetAllStoreLazy } from '@queries';
 import { useAddShipper } from '@queries/Shipper/useAddShipper';
 import { Toastify, getErrorMessage } from '@shared';
 import { useFormik } from 'formik';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { AddShipperFormFields, AddShipperFormFieldsType } from './type';
 import {
@@ -25,6 +27,7 @@ import {
 
 const ShipperForm = () => {
   const { closeModal } = useContext(DialogContext);
+  const [storeId, setStoreId] = useState<string>('');
 
   const { handleInvalidateAllShippers } = useGetAllShipper();
 
@@ -48,6 +51,7 @@ const ShipperForm = () => {
       phone: phoneNumber,
       email,
       address,
+      storeId
     });
   };
 
@@ -62,6 +66,25 @@ const ShipperForm = () => {
 
   const getFieldErrorMessage = (fieldName: string) =>
     getErrorMessage(fieldName, { touched, errors });
+
+  const { storeOptions, setParams, loading, fetchNextPage, setInputSearch } = useGetAllStoreLazy({
+    onError: (error) => Toastify.error(error.message),
+  });
+
+  useEffect(() => {
+    setParams({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSearch = (_e: unknown, value: string, reason: AutocompleteInputChangeReason) => {
+    if (reason !== 'reset') {
+      setInputSearch(value);
+    }
+  };
+
+  const handleOnChange = (e: unknown, value: SelectOption, r: AutocompleteChangeReason) => {
+    setStoreId(value?.value);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -89,7 +112,7 @@ const ShipperForm = () => {
           />
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={3}>
           <Stack spacing="10px">
             <FormLabel
               id="label-gender"
@@ -122,7 +145,7 @@ const ShipperForm = () => {
             ) : null}
           </Stack>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={3}>
           <MuiTextField
             required
             fullWidth
@@ -132,6 +155,38 @@ const ShipperForm = () => {
             errorMessage={getFieldErrorMessage(AddShipperFormFields.PHONE_NUMBER)}
             {...getFieldProps(AddShipperFormFields.PHONE_NUMBER)}
           />
+        </Grid>
+        <Grid item xs={6}>
+          <Stack spacing="10px">
+            <FormLabel
+              id="label-store"
+              className="form__label"
+              sx={{ color: COLOR_CODE.GREY_700 }}
+            >
+              Store <span className="text-red-500 font-bold text-md">*</span>
+            </FormLabel>
+            <Stack>
+              <MuiSelect
+                label="" 
+                placeholder="Choose a store"
+                required
+                size="small"
+                value={storeId}
+                onChange={handleOnChange}
+                onInputChange={handleSearch}
+                options={storeOptions}
+                onFetchNextPage={fetchNextPage}
+                allowLazyLoad
+                filterOptions={(x) => x}
+                isGetOptionOnChange
+                isLoading={loading}
+                onBlur={(event, value, reason) => {
+                  if (!value) handleSearch(event, '', reason);
+                }}
+                noOptionsText={'not found'}
+              />
+            </Stack>
+          </Stack>
         </Grid>
         <Grid item xs={12}>
           <MuiTextField
