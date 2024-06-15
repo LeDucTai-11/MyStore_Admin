@@ -1,8 +1,8 @@
-import { COLOR_CODE, TableQueryParams } from '@components';
-import { Button, Container, Grid, Radio, RadioGroup, Stack, Typography } from '@mui/material';
-import { isEmpty } from '@shared';
+import { COLOR_CODE, MuiSelect, SelectOption, TableQueryParams } from '@components';
+import { AutocompleteChangeReason, AutocompleteInputChangeReason, Button, Container, Grid, Radio, RadioGroup, Stack, Typography } from '@mui/material';
+import { Toastify, getErrorMessage, isEmpty } from '@shared';
 import { Form, FormikProvider, useFormik } from 'formik';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   ShipperFilterFormFieldsType,
@@ -10,6 +10,7 @@ import {
   UserStatusOptions,
   emptyShipperFilterValues,
 } from '../ShipperList/helpers';
+import { useGetAllStoreLazy } from '@queries';
 
 const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
   const navigate = useNavigate();
@@ -17,6 +18,21 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
   const { search } = useLocation();
 
   const query = useMemo(() => new URLSearchParams(search), [search]);
+
+  const {
+    storeOptions,
+    setParams: setStoresParams,
+    loading: loadingStores,
+    fetchNextPage: fetchNextPageStores,
+    setInputSearch: setInputSearchStores,
+  } = useGetAllStoreLazy({
+    onError: (error) => Toastify.error(error?.message),
+  });
+
+  useEffect(() => {
+    setStoresParams({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmitFilter = (values: ShipperFilterFormFieldsType) => {
     query.delete(TableQueryParams._PAGE);
@@ -47,6 +63,7 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
   const getInitialShipperFilterValues: ShipperFilterFormFieldsType = useMemo(
     () => ({
       active: searchValues.active || null,
+      storeId: searchValues.storeId || null,
     }),
     [searchValues],
   );
@@ -55,7 +72,20 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
     initialValues: getInitialShipperFilterValues,
     onSubmit: handleSubmitFilter,
   });
-  const { setValues, handleSubmit, getFieldProps, values } = formik;
+  const { setValues, handleSubmit, getFieldProps, setFieldValue, touched, errors } = formik;
+
+  const getFieldErrorMessage = (fieldName: string) =>
+    getErrorMessage(fieldName, { touched, errors });
+
+  const handleOnChangeStore = (e: unknown, value: SelectOption, r: AutocompleteChangeReason) => {
+    setFieldValue(USER_FILTER_QUERY_KEY._STORE_ID, value?.value);
+  };
+
+  const handleSearch = (_e: unknown, value: string, reason: AutocompleteInputChangeReason) => {
+    if (reason !== 'reset') {
+      setInputSearchStores(value);
+    }
+  };
 
   return (
     <Container maxWidth="xs" sx={{ p: 2 }}>
@@ -86,7 +116,6 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
                 <RadioGroup
                   sx={{ display: 'flex', gap: 2, flexDirection: 'column', padding: 2 }}
                   {...getFieldProps(USER_FILTER_QUERY_KEY._STATUS)}
-                  value={values?.active ?? null}
                 >
                   {UserStatusOptions.map((option, index) => (
                     <Stack key={index} flexDirection={'row'} alignItems={'center'} gap={3}>
@@ -96,6 +125,28 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
                   ))}
                 </RadioGroup>
               </Stack>
+            </Grid>
+            <Grid item xs={12}>
+              <MuiSelect
+                label="Select a store"
+                placeholder="Choose a store"
+                required
+                size="small"
+                {...getFieldProps(USER_FILTER_QUERY_KEY._STORE_ID)}
+                onChange={handleOnChangeStore}
+                onInputChange={handleSearch}
+                options={storeOptions}
+                onFetchNextPage={fetchNextPageStores}
+                allowLazyLoad
+                filterOptions={(x) => x}
+                isGetOptionOnChange
+                isLoading={loadingStores}
+                onBlur={(event, value, reason) => {
+                  if (!value) handleSearch(event, '', reason);
+                }}
+                noOptionsText={'not found'}
+                errorMessage={getFieldErrorMessage(USER_FILTER_QUERY_KEY._STORE_ID)}
+              />
             </Grid>
             <Grid item xs={12} display="flex" justifyContent="flex-end">
               <Button variant="outlined" sx={{ mr: 2 }} onClick={handleClearAll}>

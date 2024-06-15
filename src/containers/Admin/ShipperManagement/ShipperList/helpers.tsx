@@ -30,9 +30,10 @@ export const UserStatusOptions = [
 
 export enum USER_FILTER_QUERY_KEY {
   _STATUS = 'active',
+  _STORE_ID = 'storeId',
 }
 
-export const filterParamsKey = [USER_FILTER_QUERY_KEY._STATUS];
+export const filterParamsKey = [USER_FILTER_QUERY_KEY._STATUS, USER_FILTER_QUERY_KEY._STORE_ID];
 
 export const customStatusRender = (deletedAt: string) => {
   if (isEmpty(deletedAt)) return <Chip label={STATUS._ACTIVE} color="success" />;
@@ -56,8 +57,10 @@ export const customRoleRender = (userRoles: UserRoles[]) => {
 
 export type ShipperFilterFormFieldsType = {
   active: string;
+  storeId?: string;
 };
 
 export const emptyShipperFilterValues: ShipperFilterFormFieldsType = {
   active: null,
+  storeId: null,
 };

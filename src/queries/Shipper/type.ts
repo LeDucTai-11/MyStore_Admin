@@ -6,6 +6,7 @@ export type ShipperList = {};
 export type ShipperListParams = TableParams & {
   active?: boolean;
   roles?: string[];
+  storeId?: string;
 };
 
 export type ShipperResponse = {

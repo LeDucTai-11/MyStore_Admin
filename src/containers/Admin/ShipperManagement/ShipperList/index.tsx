@@ -80,9 +80,11 @@ import {
   
     const paramsUrl: ShipperFilterFormFieldsType = useMemo(() => {
       const statusQuery = query.get(USER_FILTER_QUERY_KEY._STATUS) || undefined;
+      const storeQuery = query.get(USER_FILTER_QUERY_KEY._STORE_ID) || undefined;
   
       return {
         active: statusQuery,
+        storeId: storeQuery,
       };
     }, [query]);
   
