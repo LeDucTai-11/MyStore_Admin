@@ -35,15 +35,20 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
   }, []);
 
   const handleSubmitFilter = (values: ShipperFilterFormFieldsType) => {
+    const { active, storeId } = values;
     query.delete(TableQueryParams._PAGE);
 
-    Object.keys(values).forEach((key) => {
-      if (isEmpty(values[key])) {
-        query.delete(key);
-      } else {
-        query.set(key, values[key].toString());
-      }
-    });
+    if (!isEmpty(active)) {
+      query.set(USER_FILTER_QUERY_KEY._STATUS, active);
+    } else {
+      query.delete(USER_FILTER_QUERY_KEY._STATUS);
+    }
+
+    if (!isEmpty(storeId)) {
+      query.set(USER_FILTER_QUERY_KEY._STORE_ID, storeId);
+    } else {
+      query.delete(USER_FILTER_QUERY_KEY._STORE_ID);
+    }
 
     navigate({ search: query.toString() });
     handleClosePopup();
@@ -51,11 +56,11 @@ const ShipperFilter: React.FC<Props> = ({ searchValues, handleClosePopup }) => {
 
   const handleClearAll = () => {
     setValues({
-      ...emptyShipperFilterValues,
+      active: null,
+      storeId: null,
     });
-    Object.keys(emptyShipperFilterValues).forEach((key) => {
-      query.delete(key);
-    });
+    query.delete(USER_FILTER_QUERY_KEY._STATUS);
+    query.delete(USER_FILTER_QUERY_KEY._STORE_ID);
     navigate({ search: query.toString() });
     handleClosePopup();
   };
